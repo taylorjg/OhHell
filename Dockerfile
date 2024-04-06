@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /source
 
-COPY . .
+COPY ./server .
+COPY ./client/dist ./wwwroot
 RUN dotnet restore
 RUN dotnet publish --configuration Release --output /published --no-restore
 
