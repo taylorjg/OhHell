@@ -1,0 +1,6 @@
+@OhHell_HostAddress = http://localhost:5062
+
+GET {{OhHell_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
