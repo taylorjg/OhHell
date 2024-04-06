@@ -10,13 +10,17 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
+// I'm enabling this in all environments for now because it is handy.
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
-app.UseHttpsRedirection();
+// We are deploying to render.com which does its own
+// https redirection (I think) so we are commenting this out.
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
