@@ -12,7 +12,7 @@ export const App = () => {
 
   const getWeatherForecastQuery = useQuery({
     queryKey: ["GetWeatherForecast"],
-    queryFn: getWeatherForecast
+    queryFn: getWeatherForecast,
   });
 
   useEffect(() => {
@@ -29,7 +29,5 @@ export const App = () => {
     return <div>ERROR: {getWeatherForecastQuery.error.message}</div>;
   }
 
-  return (
-    <pre>{JSON.stringify(results, null, 2)}</pre>
-  );
-}
+  return <pre>{JSON.stringify(results, null, 2)}</pre>;
+};
