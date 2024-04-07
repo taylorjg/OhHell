@@ -20,5 +20,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0-bookworm-slim-amd64
 
 WORKDIR /app
 COPY --from=build /published ./
-EXPOSE 8080
+
+ENV PORT=8080
+
 ENTRYPOINT ["dotnet", "OhHell.dll"]
