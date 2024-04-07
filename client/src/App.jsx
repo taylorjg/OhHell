@@ -1,16 +1,16 @@
 import { useWeatherForecast } from "@app/hooks";
+import { Version } from "@app/components";
 
 export const App = () => {
-  const { weatherForecastItems, isLoading, isError, error } =
+  const { weatherForecastItems, isSuccess, isLoading, isError, error } =
     useWeatherForecast();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>ERROR: {error.message}</div>;
-  }
-
-  return <pre>{JSON.stringify(weatherForecastItems, null, 2)}</pre>;
+  return (
+    <>
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>ERROR: {error.message}</div>}
+      {isSuccess && <pre>{JSON.stringify(weatherForecastItems, null, 2)}</pre>}
+      <Version />
+    </>
+  );
 };
