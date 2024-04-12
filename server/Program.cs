@@ -1,6 +1,18 @@
+using Microsoft.AspNetCore.HttpLogging;
+using Microsoft.OpenApi.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddHttpLogging(logging =>
+{
+  logging.LoggingFields =
+    HttpLoggingFields.Request |
+    HttpLoggingFields.Response |
+    HttpLoggingFields.Duration;
+  logging.CombineLogs = true;
+});
 
 builder.Services.AddControllers();
 
@@ -12,10 +24,12 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+app.UseHttpLogging();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 // We are deploying to render.com which does its own https redirection (I think).
