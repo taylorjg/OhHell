@@ -41,6 +41,7 @@ app.MapControllers();
 // For serving out the React Single Page Application (SPA).
 app.UseDefaultFiles();
 app.UseStaticFiles();
+app.MapFallbackToFile("index.html");
 
 // Since we are deploying to render.com, we should run on the port specified by the PORT env var.
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5062";
