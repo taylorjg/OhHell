@@ -1,10 +1,18 @@
 import { apiRestImplementation, apiLocalStorageImplementation } from "@app/api";
 
-const searchParams = new URLSearchParams(location.search);
-const isRestImplementation = searchParams.get("api") === "rest";
+import { API_IMPLEMENTATION_KEY, ApiImplementations } from "@app/constants";
+
+const lookupApiImplementation = (apiImplementation) => {
+  switch (apiImplementation) {
+    case ApiImplementations.Rest:
+      return apiRestImplementation;
+    case ApiImplementations.LocalStorage:
+    default:
+      return apiLocalStorageImplementation;
+  }
+};
 
 export const useApi = () => {
-  return isRestImplementation
-    ? apiRestImplementation
-    : apiLocalStorageImplementation;
+  const apiImplementation = localStorage.getItem(API_IMPLEMENTATION_KEY);
+  return lookupApiImplementation(apiImplementation);
 };
