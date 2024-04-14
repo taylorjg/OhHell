@@ -1,4 +1,4 @@
-export * from "./CohortsPage";
+export * from "./HomePage";
 export * from "./CohortPage";
 export * from "./GamesPage";
 export * from "./GamePage";

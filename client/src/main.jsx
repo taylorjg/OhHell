@@ -10,7 +10,8 @@ import {
 } from "@mui/material";
 import { Global } from "@emotion/react";
 
-import { App } from "./App.jsx";
+import { Layout } from "@app/components";
+import { Paths } from "@app/constants";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -18,6 +19,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import {
+  HomePage,
   CohortPage,
   ConfigPage,
   GamesPage,
@@ -29,36 +31,41 @@ import { GlobalStyles } from "./Global.styles";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/cohorts/new",
-    element: <CohortPage />,
-  },
-  {
-    path: "/cohorts/:cohortId",
-    element: <CohortPage />,
-  },
-  {
-    path: "/cohorts/:cohortId/games",
-    element: <GamesPage />,
-  },
-  {
-    path: "/cohorts/:cohortId/games/new",
-    element: <GamePage />,
-  },
-  {
-    path: "/cohorts/:cohortId/games/:gameId",
-    element: <GamePage />,
-  },
-  {
-    path: "/config",
-    element: <ConfigPage />,
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
+    element: <Layout />,
+    children: [
+      {
+        path: Paths.Home,
+        element: <HomePage />,
+      },
+      {
+        path: Paths.NewCohort,
+        element: <CohortPage />,
+      },
+      {
+        path: Paths.EditCohort,
+        element: <CohortPage />,
+      },
+      {
+        path: Paths.Games,
+        element: <GamesPage />,
+      },
+      {
+        path: Paths.NewGame,
+        element: <GamePage />,
+      },
+      {
+        path: Paths.EditGame,
+        element: <GamePage />,
+      },
+      {
+        path: Paths.Config,
+        element: <ConfigPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
+    ],
   },
 ]);
 

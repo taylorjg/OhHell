@@ -4,7 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useGetCohorts, useCohortMutations } from "@app/hooks";
 import { CohortsTable, Version } from "@app/components";
 
-export const App = () => {
+export const HomePage = () => {
   const { cohorts, isSuccess, isLoading, isError, error } = useGetCohorts();
   const { createCohort } = useCohortMutations();
 
