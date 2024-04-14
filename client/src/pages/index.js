@@ -1,0 +1,6 @@
+export * from "./CohortsPage";
+export * from "./CohortPage";
+export * from "./GamesPage";
+export * from "./GamePage";
+export * from "./ConfigPage";
+export * from "./NotFoundPage";

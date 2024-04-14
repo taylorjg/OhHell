@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   createTheme,
   ThemeProvider,
@@ -16,7 +17,50 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import {
+  CohortPage,
+  ConfigPage,
+  GamesPage,
+  GamePage,
+  NotFoundPage,
+} from "@app/pages";
+
 import { GlobalStyles } from "./Global.styles";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/cohorts/new",
+    element: <CohortPage />,
+  },
+  {
+    path: "/cohorts/:cohortId",
+    element: <CohortPage />,
+  },
+  {
+    path: "/cohorts/:cohortId/games",
+    element: <GamesPage />,
+  },
+  {
+    path: "/cohorts/:cohortId/games/new",
+    element: <GamePage />,
+  },
+  {
+    path: "/cohorts/:cohortId/games/:gameId",
+    element: <GamePage />,
+  },
+  {
+    path: "/config",
+    element: <ConfigPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+]);
 
 const darkTheme = responsiveFontSizes(
   createTheme({
@@ -43,7 +87,7 @@ ReactDOM.createRoot(root).render(
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
-        <App />
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>
