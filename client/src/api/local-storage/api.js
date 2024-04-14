@@ -9,6 +9,8 @@ const getWeatherForecast = async () => {
 
 const COHORTS_KEY = "cohorts";
 
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const cohorts = {
   getCohorts: async () => {
     const string = localStorage.getItem(COHORTS_KEY);

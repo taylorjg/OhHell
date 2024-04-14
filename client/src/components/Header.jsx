@@ -2,6 +2,8 @@ import { AppBar, Avatar, IconButton, Toolbar } from "@mui/material";
 
 import { useRouteMatch } from "@app/hooks";
 
+import { NetworkActivity } from "./NetworkActivity";
+
 import {
   StyledHeader,
   StyledHeaderLeft,
@@ -24,6 +26,7 @@ export const Header = () => {
           <StyledHeaderMiddle>{title}</StyledHeaderMiddle>
           <StyledHeaderRight />
         </StyledHeader>
+        <NetworkActivity />
       </AppBar>
       <Toolbar />
     </>

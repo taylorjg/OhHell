@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid, MenuItem, Select } from "@mui/material";
+import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 import { API_IMPLEMENTATION_KEY, ApiImplementations } from "@app/constants";
 
@@ -17,18 +17,26 @@ export const ConfigPage = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12} md={6} sx={{ mx: { xs: 2, md: "auto" } }}>
-        <Select
-          size="small"
-          onChange={onChange}
-          value={selectedApiImplementation}
-        >
-          {Object.entries(ApiImplementations).map(([key, value]) => (
-            <MenuItem key={key} value={value}>
-              {key}
-            </MenuItem>
-          ))}
-        </Select>
+      <Grid item xs={12} md={6} sx={{ mx: { xs: 2, md: "auto" }, my: 2 }}>
+        <FormControl>
+          <InputLabel id="select-api-implementation-label">
+            API Implementation
+          </InputLabel>
+          <Select
+            id="select-api-implementation-label"
+            size="small"
+            onChange={onChange}
+            value={selectedApiImplementation}
+            label="API Implementation"
+            sx={{ width: "10rem" }}
+          >
+            {Object.entries(ApiImplementations).map(([key, value]) => (
+              <MenuItem key={key} value={value}>
+                {key}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </Grid>
     </Grid>
   );
